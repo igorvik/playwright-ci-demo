@@ -5,6 +5,10 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+  checks: write
+
 jobs:
   test:
     timeout-minutes: 10
@@ -36,3 +40,11 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+      - name: Publish JUnit test results
+        if: ${{ !cancelled() }}
+        uses: dorny/test-reporter@v2
+        with:
+          name: Playwright test results
+          path: test-results/junit.xml
+          reporter: java-junit
