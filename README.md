@@ -21,6 +21,12 @@ The suite runs against Chromium, Firefox, and WebKit. TypeScript can be checked 
 npm run typecheck
 ```
 
+Dependency vulnerabilities can be checked with:
+
+```bash
+npm run audit
+```
+
 The HTML report is generated in `playwright-report/`. Open it with:
 
 ```bash

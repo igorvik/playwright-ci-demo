@@ -39,6 +39,9 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+      - name: Audit dependencies
+        run: npm run audit
+
       - name: Run Playwright tests
         run: npm test
 
