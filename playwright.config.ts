@@ -1,12 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const isCI = Boolean((globalThis as { process?: { env?: { CI?: string } } }).process?.env?.CI);
+
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 2 : undefined,
-  reporter: process.env.CI
+  forbidOnly: isCI,
+  retries: isCI ? 2 : 0,
+  workers: isCI ? 2 : undefined,
+  reporter: isCI
     ? [
         ['github'],
         ['junit', { outputFile: 'test-results/junit.xml' }],
