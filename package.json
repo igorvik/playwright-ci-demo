@@ -5,11 +5,14 @@
   "description": "Playwright tests running locally and in GitHub Actions",
   "scripts": {
     "test": "playwright test",
+    "typecheck": "tsc --noEmit",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "report": "playwright show-report"
   },
   "devDependencies": {
-    "@playwright/test": "^1.55.0"
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.13.5",
+    "typescript": "^5.9.3"
   }
 }

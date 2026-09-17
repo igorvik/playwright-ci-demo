@@ -15,6 +15,12 @@ npx playwright install chromium
 npm test
 ```
 
+The suite runs against Chromium, Firefox, and WebKit. TypeScript can be checked independently with:
+
+```bash
+npm run typecheck
+```
+
 The HTML report is generated in `playwright-report/`. Open it with:
 
 ```bash
@@ -29,3 +35,5 @@ npm run test:ui
 ```
 
 The workflow in `.github/workflows/playwright.yml` runs on pushes to `main` and on pull requests. It installs Chromium, runs the suite, and uploads the HTML report as a workflow artifact.
+
+On pushes to `main`, the workflow also publishes the HTML report to GitHub Pages. Open the `github-pages` deployment environment or the workflow summary to review the report in a browser. Enable **Settings > Pages > Source > GitHub Actions** once for the repository before the first deployment.
