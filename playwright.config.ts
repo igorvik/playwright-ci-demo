@@ -1,6 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 
 const isCI = Boolean((globalThis as { process?: { env?: { CI?: string } } }).process?.env?.CI);
+const isGitHubActions = Boolean(
+  (globalThis as { process?: { env?: { GITHUB_ACTIONS?: string } } }).process?.env?.GITHUB_ACTIONS,
+);
 
 export default defineConfig({
   testDir: './tests',
@@ -10,7 +13,7 @@ export default defineConfig({
   workers: isCI ? 2 : undefined,
   reporter: isCI
     ? [
-        ['github'],
+        [isGitHubActions ? 'github' : 'list'],
         ['junit', { outputFile: 'test-results/junit.xml' }],
         ['html', { outputFolder: 'playwright-report', open: 'never' }],
       ]

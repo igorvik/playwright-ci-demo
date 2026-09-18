@@ -4,3 +4,4 @@ test-results/
 blob-report/
 .playwright-mcp/
 .DS_Store
+test.ts

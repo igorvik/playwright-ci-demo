@@ -1,6 +1,6 @@
 # Playwright CI Demo
 
-This project runs browser tests locally and in GitHub Actions.
+This project runs browser tests locally, in GitHub Actions, and in GitLab CI.
 
 ## Setup
 
@@ -41,5 +41,7 @@ npm run test:ui
 ```
 
 The workflow in `.github/workflows/playwright.yml` runs on pushes to `main` and on pull requests. It installs Chromium, runs the suite, and uploads the HTML report as a workflow artifact.
+
+The pipeline in `.gitlab-ci.yml` runs the same typecheck, dependency audit, and browser test checks in GitLab CI. It uses the official Playwright container and publishes the HTML report as an artifact plus the JUnit results in GitLab's test report view.
 
 On pushes to `main`, the workflow also publishes the HTML report to GitHub Pages. Open the `github-pages` deployment environment or the workflow summary to review the report in a browser. Enable **Settings > Pages > Source > GitHub Actions** once for the repository before the first deployment.
